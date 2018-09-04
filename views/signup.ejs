@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>Sign Up Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/checkout/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <img src="logo.jpg" alt="Happy Dog Grooming" style="float:left;padding:10px">
+
+    <div class="container">
+      <div class="py-4 text-center"> 
+        <h2>Sign Up </h2>
+        <p class="lead">Welcome to Happy Dog Grooming. You can sign up as our client at this page.</p>
+        <p>Already have an account? <a href="/login">Log in here</a></p> 
+      </div>
+
+      <div class="row">
+        
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">Personal Information</h4>
+
+          <form class="needs-validation" novalidate method="POST" action="/signup">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" name='firstname' required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" name='lastname' required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name='password' required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your password is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email </label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" name='email' required>
+              <div class="invalid-feedback">
+                Please enter a valid email address.
+              </div>
+              <%if (error==='email'){ %>
+                <div class="alert  alert-danger">This email address has already been registered.</div>
+              <% } %>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" name='address' required>
+              <div class="invalid-feedback">
+                Please enter your address.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phoneno">Phone Number </label>
+              <input type="tel" class="form-control" id="phoneno" name='phoneno' required>
+              <div class="invalid-feedback">
+                Please enter your phone number.
+              </div>
+            </div>
+            <br>
+          
+            <hr class="mb-4">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="signup">Sign up now</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Happy Dog Grooming</p>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src='main.js'></script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+    
+    
+  </body>
+</html>

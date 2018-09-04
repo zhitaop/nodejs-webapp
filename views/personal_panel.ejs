@@ -1,0 +1,37 @@
+          <div class="tab-pane" id="personal" role="tabpanel" href="#personal" >
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Personal Details</h1>
+              <button class="btn  btn-secondary" data-toggle="modal" data-target="#editpersonal">
+                <span data-feather="edit"></span>
+                Edit
+              </button>  
+            </div>
+            <% include editpersonalmodal %>
+
+            <div class="row">
+              <div class="col-md-2">Firstname</div>
+              <div class="col-md-10"><%= firstname %></div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-md-2">Lastname</div>
+              <div class="col-md-10"><%= lastname %></div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-md-2">Email</div>
+              <div class="col-md-10"><%= email %></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2">Address</div>
+              <div class="col-md-10"><%= address %></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2">Phone number</div>
+              <div class="col-md-10"><%= phone %></div>
+            </div>
+          </div>

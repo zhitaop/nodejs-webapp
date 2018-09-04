@@ -1,0 +1,75 @@
+          <div class="tab-pane active" id="home" role="tabpanel" >
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Dashboard</h1>
+            </div>
+
+            <p style='font-size:150%'> Welcome, <%= firstname %>.</p>
+            <% if(mybooked.length===0){ %>
+              <p style='font-size:150%'>You don't have any appointment yet.</p>
+            <% }else if(mybooked.length===1){ %>
+              <p style='font-size:150%'>You have 1 appointment.</p>
+            <% }else{ %>
+              <p style='font-size:150%'>You have <%=mybooked.length%> appointments.</p>
+            <%}%>
+
+            <div class="album py-5 bg-light"> <div class="container">
+              <div class="row">
+              <% mybooked.forEach(function(b){ %>
+                <div class="col-md-4">           
+                  <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                      <div class='row'>                
+                        <div class="col-md-5">Dog</div>
+                        <div class="col-md-7"><%= b.dogname %></div>  
+                      </div>
+                      <br>
+                      <div class='row'>                
+                        <div class="col-md-5">Date</div>
+                        <div class="col-md-7"><%= b.date.toDateString() %>
+                        </div>  
+                      </div>
+                      <br>
+                      <div class='row'>                
+                        <div class="col-md-5">Time</div>
+                        <div class="col-md-7">
+                        <% if(b.slot==='1'){%>9:00 am - 10:30 am
+                        <%}else if(b.slot==='2'){%> 10:30 am - 12:00 pm
+                        <%}else if(b.slot==='3'){%> 12:00 am - 1:30 pm
+                        <%}else if(b.slot==='4'){%> 1:30 pm - 3:00 pm
+                        <%}else if(b.slot==='5'){%> 3:00 pm - 4:30 pm
+                        <%}else if(b.slot==='6'){%> 4:30 pm - 6:00 pm
+                        <%}%> </div>  
+                      </div>
+                      <br> 
+                      <div class='row'>                
+                        <div class="col-md-5">Option</div>
+                        <div class="col-md-7"><%= b.grooming_option %></div>  
+                      </div>      
+                      <br>
+                      <div class='row'>                
+                        <div class="col-md-5">Instructions</div>
+                        <div class="col-md-7"><%= b.instruction %></div>  
+                      </div>      
+                      <br>                                       
+                      <div class="d-flex justify-content-between align-items-center"> 
+                        <div class="btn-group"> 
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target=<%="#editbooking"+b.id %>>
+                          <span data-feather="edit-2"></span>Re-schedule
+                        </button>  
+                        </div>                                                                     
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target=<%="#deletebooking"+b.id %>>
+                          <span data-feather="x"></span>Cancel
+                        </button>
+
+                        <% include deletebooking %>
+                        <% include editbooking %>                         
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+                <% }) %>            
+              </div>
+            </div> 
+            </div>
+           
+          </div>

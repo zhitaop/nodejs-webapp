@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="User page of my webapp">
+    <meta name="author" content="Zhitao Pan">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>User Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/dashboard/dashboard.css" rel="stylesheet">
+
+    <link href="/mycss.css" rel='stylesheet'>
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Happy Dog Grooming</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="/login">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+
+            <ul class="nav  flex-column" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#home" role="tab" >
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#personal" role="tab"  >
+                  <span data-feather="user"></span>
+                  Personal Details
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#dogs" role="tab">
+                  <span data-feather="heart"></span>
+                  My Dogs
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#appointments" role="tab">
+                  <span data-feather="calendar"></span>
+                  Make an Appointment
+                </a>
+              </li>
+            </ul>
+            
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+        <div class="tab-content">
+
+          <% include dashboard_panel %>
+
+          <% include personal_panel %>
+
+          <% include dogs_panel %>
+
+          <% include booking_panel %>
+
+        </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+
+      $(function(){
+        var hash = window.location.hash;
+        hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+        $('#navtabs a').on('shown.bs.tab', function (e) {
+        $(this).tab('show');
+        var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+        window.location.hash = this.hash;
+        $('html,body').scrollTop(scrollmem);
+        });
+      });
+    </script>
+
+    <% include calendar %>
+
+    <% dogs.forEach(function(dogs){ %>
+      <script>
+      $( document ).ready(function() {
+          console.log( "ready!" );
+          // prevent form to submit when edit dog has empty inputs
+            $( "<%="#edog"+dogs.id%>" ).submit(function( event ) {
+              
+              var hasInput=false;
+                $('<%='.edog'+dogs.id%>').each(function () {
+                if($(this).val()  !== ""){
+                  hasInput=true;
+                }
+                }); 
+                console.log(hasInput);
+                if(!hasInput){
+                  event.preventDefault();
+                  alert("need input to edit"+"<%=dogs.name%>");
+                }                                
+            }); 
+      });
+    </script>
+    <% }) %>
+  </body>
+</html>
+
+

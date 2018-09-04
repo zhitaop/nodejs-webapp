@@ -1,0 +1,53 @@
+          <div class="tab-pane" id="appointments" role="tabpanel" >
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Make an Appointment</h1>          
+            </div>
+
+            <form class="needs-validation" novalidate method="POST" action= "/appointment/add" > 
+            <div class="row">
+              <div class="col-md-2 text-right" style="font-size:130%">Select a dog:</div>
+              <div class="col-md-2">
+                <select class="custom-select d-block w-100" name="dog" required>
+                  <option value="">Choose...</option>
+                  <% dogs.forEach(function(dogs){ %>
+                  <option value=<%=dogs.id%>><%= dogs.name %></option>                  
+                  <% }) %>
+
+                </select>
+                <div class="invalid-feedback">
+                  Please select a dog.
+                </div>              
+              </div>
+              <div class="col-md-3 text-right" style="font-size:130%">Select a grooming option:</div>
+              <div class="col-md-3">
+                <select class="custom-select d-block w-100" name='option' required>
+                  <option value="">Choose...</option>
+                  <option>wash only</option>
+                  <option>wash and nail clipping</option>
+                  <option>deluxe grooming</option>                  
+                </select>
+                <div class="invalid-feedback">
+                  Please select a grooming option.
+                </div>              
+              </div>              
+            </div>            
+
+            <div id="calendarr"></div>
+
+            <div class="form-group">
+              <label >If you have any special instructions for our groomers, you can add them below:</label>
+              <textarea class="form-control"  rows="3" name='instruction'></textarea>
+            </div>
+
+            <div class="text-center">
+            <br><br>
+              <button class="btn  btn-secondary" type="submit" >
+                <span data-feather="plus-circle"></span>
+                Add an appointment
+              </button>
+            </div>
+            <br><br><br>            
+            
+            </form>
+          </div>

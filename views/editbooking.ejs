@@ -1,0 +1,25 @@
+ <div class="modal fade" id=<%="editbooking"+b.id%> tabindex="-1" role="dialog" >
+              <div class="modal-dialog modal-lg modal-dialog-centered" >
+                <div class="modal-content">
+
+                  <div class="modal-body border-bottom">
+                  <form class="needs-validation" novalidate method="POST" action=<%= "/booking/edit/"+userid+"/"+b.id %> >
+                    <div id=<%="book"+b.id%>></div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col">
+                          <button class="btn btn-primary btn-block" type="submit" id="add">Confirm</button>
+                        </div>
+                      </div>
+                    </div>                         
+                  </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>

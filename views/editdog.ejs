@@ -1,0 +1,44 @@
+ <div class="modal fade" id=<%="editdog"+dogs.id%> tabindex="-1" role="dialog" >
+              <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+
+                  <div class="modal-header  border-bottom ">
+                    <h4 class="modal-title"><%='Edit dog '+dogs.name%></h4>
+                    <button type="button" class="close" data-dismiss="modal" >
+                      <span >&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body border-bottom">
+                    <form class="needs-validation" id=<%="edog"+dogs.id%> novalidate method="POST" action=<%= "/dogs/edit/"+userid+"/"+dogs.id %>>
+                      <div class="form-group">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control <%='edog'+ dogs.id%>" value ="<%=dogs.name%>" name='name'>
+                      </div>
+                      <div class="form-group">
+                        <label for="name" class="col-form-label">Breed:</label>
+                        <input type="text" class="form-control <%='edog' + dogs.id%>" value ="<%=dogs.breed%>" name='breed'>
+                      </div>
+                      <div class="form group">
+                        <label for="name" class="col-form-label">Date of birth:</label>
+                        <input type="date" class="form-control <%='edog'+ dogs.id%>" value =<%=dogs.dob2%> name='dob'>
+                      </div>
+                      <br>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col">
+                          <button class="btn btn-primary btn-block" type="submit" id="add">Edit</button>
+                        </div>
+                      </div>
+                    </div>                         
+                  </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
