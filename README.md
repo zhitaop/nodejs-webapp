@@ -21,3 +21,5 @@ A webapp for online dog grooming appointments
 * System can generate automatic email reminders when a new appointment is made, or 24 hours prior to the appointment time.
 * Admin can view all appointments in the system.
 
+## Future improvement
+* The Express session module used in the app.js intended to prevent unauthorised access to user pages, but it doesn't work entirely properly. Users can't access user pages by entering the "../user/userid" URL without loging in. However, they are able to access other users' pages by entering the corresponding URL after they log in to their own.
