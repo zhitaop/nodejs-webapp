@@ -23,3 +23,4 @@ A webapp for online dog grooming appointments
 
 ## Future improvement
 * The Express session module used in the app.js intended to prevent unauthorised access to user pages, but it doesn't work entirely properly. Users can't access user pages by entering the "../user/userid" URL without loging in. However, they are able to access other users' pages by entering the corresponding URL after they log in to their own.
+* The login authntication is implemented by storing the user's password in database in plain text and comparing the password user input when loging in. Improvement can probably be made about this naive approach, like using the [Passport.js](http://www.passportjs.org/) middleware
